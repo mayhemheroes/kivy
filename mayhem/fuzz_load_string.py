@@ -4,9 +4,8 @@ import sys
 import pdb
 
 with atheris.instrument_imports():
-    from kivy.lang import Builder, BuilderException, ParserException
+    from kivy.lang import Parser, ParserException
     from kivy.factory import FactoryException
-    from kivy.uix.widget import Widget
 
 
 @atheris.instrument_func
@@ -15,10 +14,8 @@ def TestOneInput(data):
     parse_str = fdp.ConsumeUnicode(atheris.ALL_REMAINING)
 
     try:
-        Builder.load_string(parse_str)
-    except FactoryException:
-        return
-    except (ParserException, BuilderException):
+        Parser(content=parse_str, filename=None)
+    except (FactoryException, ParserException):
         return
     except AttributeError as e:
         if 'First letter' not in str(e):

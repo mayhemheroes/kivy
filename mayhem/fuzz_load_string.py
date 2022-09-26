@@ -3,9 +3,6 @@ import atheris
 import sys
 import pdb
 
-with atheris.instrument_imports():
-    from kivy.lang import Parser, ParserException
-    from kivy.factory import FactoryException
 
 
 @atheris.instrument_func
@@ -31,4 +28,11 @@ def main():
 
 
 if __name__ == "__main__":
+    # Something happens in the Mayhem toolchain that triggers the kivy help menu during build, so must clear argv first
+    old_argv = sys.argv
+    sys.argv = [sys.argv[0]]
+    with atheris.instrument_imports():
+        from kivy.lang import Parser, ParserException
+        from kivy.factory import FactoryException
+    sys.argv = old_argv
     main()

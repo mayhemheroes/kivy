@@ -1,0 +1,8 @@
+project: kivy
+target: kivy-fuzz
+testsuite:
+    - file://mayhem/testsuite
+
+cmds:
+  - cmd: /fuzz_load_string.py
+    libfuzzer: true

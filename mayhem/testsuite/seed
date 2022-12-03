@@ -1,0 +1,8 @@
+#:import random random.random
+Button:
+    size_hint: random(), random()
+    pos_hint: {'x': random(), 'y': random()}
+    text:
+        'size_hint x: {} y: {}\\n pos_hint x: {} y: {}'.format(\
+        self.size_hint_x, self.size_hint_y, self.pos_hint['x'],\
+        self.pos_hint['y'])

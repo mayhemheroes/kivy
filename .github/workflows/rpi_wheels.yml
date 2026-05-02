@@ -20,7 +20,7 @@ jobs:
       matrix:
         docker_images: ['balenalib/armv7hf-debian:buster']
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v6.0.2
     - name: Generate version metadata
       run: |
         source .ci/ubuntu_ci.sh
